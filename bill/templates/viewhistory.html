@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+    <title>invoice-{{history.name}}</title>
+    <!-- <style>
+
+    
+    .a {margin-top: 10%;} .contact,.con h4{font-size: 12px;} .a table td{height:80px;}
+    .b table,.c table,.a table,.c td,.b td{border: 1px solid black;border-collapse: collapse;}
+    td{height: 25px;}
+    .a,.c,.b{border: 2px solid rgba(0, 0, 0, 0);margin-left:15%;margin-right: 15%; border-radius: 20px;}
+   
+   .invoice{text-decoration: underline;margin: 0% 0% 0% 30%;font-size: 100%; font-family: Arial, Helvetica, sans-serif;}
+   .logo{height: 150px;width: 200px; margin-top: 0px;border-radius: 20px;}
+   /* .invoice{position: relative; top: -10%;right:7%} */
+   .cmp-tit{font-family: Franklin Gothic Medium, serif;}
+   .log1{text-align: center;}
+   .cmp-adr{font-size: 100%;} .contact{display: inline-block;margin-left: 22%;} 
+   .contact{text-align: left; position: relative;}  
+   .invoice,.cmp-adr,.con{margin-top: 0;text-align: center;}
+   .cmp-tit{font-size: 150%;text-align: center;margin-right: 10%;} 
+   .cmp-adr{text-align: center;margin-right: 20%;}
+   
+   /* the gstin */
+   
+   p,h4{display: inline;}
+   .c td{text-align: center;}
+   .chd,#rs{background-color: rgb(12, 12, 134);color: rgb(255, 255, 255);text-align: left; margin-left:20px;}
+   .c #x{height: 600px;text-align: left;}
+   #val,#valu{text-align: left;}
+   .oe{position: relative;top:47%;left:3%}
+
+   /* bank dettaails */
+   .d{border: 1px solid black;margin-left: 15%;width: 710px; border-radius:10px 10px 10px 20px;}
+      .bkwd{left: 4%;} .bkwd,.bank{display:inline} .d table{margin-left: 0%;}
+      .bank td{font-size: 13px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+    .e{border: 1px solid black; width:710px;height: 147px;margin-right: 15%;}
+.e{border-radius:10px 10px 20px 10px;} .e h2{font-size: 22px;text-align: center;} #for{position: relative;top:5%;right:-44%}
+#sign{position: relative;right:-45%;top:26%}
+
+   </style> -->
+   <link rel="stylesheet" href="{% static 'bill.css' %}">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
+    </script>
+    <script src="{% static 'all.js' %}"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script type="text/javascript">
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+
+        function makePDF() {
+            html2canvas(document.querySelector(".container"), {
+                allowTaint: true,
+                useCORS: true,
+                scale: 1,
+            }).then(canvas => {
+                // document.body.appendChild(canvas)
+                var img = canvas.toDataURL("image/png");
+                var doc = new jsPDF();
+                doc.setFont('Arial');
+                doc.getFontSize(9);
+                doc.addImage(img, 'PNG', 2, 5, 225, 285);
+                doc.save("invoice");
+            });
+        }
+    </script>
+   <style>
+    #parti{
+        position: relative; left: 5%;
+        top:-3%;line-height: 290%;
+    }
+    #serial{
+        position: relative; left: 30%;
+        top:-3%;line-height: 290%;
+    }
+    #serialqty{
+        position: relative; left: 30%;
+        top:0%;line-height: 290%;
+    }
+    #serialto{
+         margin-left: 20%;
+        
+    }
+
+    .pdfmaker{
+     border: none;padding: 10px 70px 10px 80px;color: white;background-color: blue;margin: 2% 20% 4% 20%;
+ display: flex;
+    }
+   
+   </style>
+</head>
+<body>
+
+    <br>
+    <h1 style=" position: absolute; top: 87px; left: 30%;width: fit-content;">Invoice of Mr/Mrs. {{history.name}}</h1>
+   <div class="pdfmaker">
+    <form action="/history" method="post">{% csrf_token %}   &emsp;
+        <button type="submit"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+            GO Back</button>
+    </form>
+    &emsp;&emsp;
+    
+    <form action="/home" method="post">{% csrf_token %}   &emsp;
+        <button type="submit"><i class="fa fa-home" aria-hidden="true"> 
+        </i> HOME</button>
+    </form>
+    &emsp;&emsp;
+    
+    <button type="button"  onclick="makePDF()">Download PDF <i class="fa fa-file-pdf" aria-hidden="true"></i></button></div> 
+ <!-- THE HEAD DIV -->
+ 
+ {% block content %}
+<div class="container">
+    <div class="a" style="margin-top: 10px;">
+       <table>
+        <tr>
+            <td rowspan="3" class="log" width="282px"><img class="logo" src="{% static 'images/logo.png' %}" alt=""></td>  
+            <td  width="80%" class="log1">
+                <h4 class="invoice">INVOICE</h4>
+                <div class="contact">
+                     <h4 class="con">Cell &nbsp; : 74025 74008 </h4> <br>
+                    
+                     <h4 class="con1" style="font-size: 13px;">E-mail</h4> <h4 >: lsssalem2019@gmail.com</h4>
+                      </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="cmp-tit">
+                <p class="cmp-tit">LOGICAL SUPPORT AND SOLUTIONS</p>
+            </td>   
+        </tr>
+        <tr>
+            <td colspan="3" width="1020px"  class="cmp-adr">
+                <p class="cmp-adr">230,G1,itteri Road,Meyanoor,salem - 636 004 , Tamil Nadu</p>
+            </td>
+        </tr>
+    </table>   
+    </div>
+
+    <!-- the GST DIV -->
+
+    <div class="b">
+   <table>
+    <tr>
+        <td width="592px"><P class="gst"> &emsp; GSTIN : 33HGSPS2995K1ZA</P></td>
+        <td width="390px"> <p> &emsp;No.   &emsp; {{history.id}} </p> </td>
+        <td width="430px"> <p> &emsp;Date : &emsp; {{history.date}}</p></td>
+    </tr>
+    <tr>
+        <td colspan="4" style="border-width:1px 1px 0px 1px"> &emsp;To.</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="border-width:0px 1px 1px 1px">
+            <p class="mr">&emsp; Mr/Mrs &emsp;&emsp; </p>
+            <span name="name" style="margin-left: 25%;">{{history.name}}</span>
+            <!-- <textarea name="" id="" cols="123" rows="2"></textarea> -->
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"><p> &emsp; Party's GST No.&emsp;&emsp;  &emsp; &emsp; &emsp; &emsp; {{history.party_GST}} </p></td>
+    </tr>
+   </table>
+
+    </div>
+
+<!-- <p id="parti">{{product1}}<br>{{product2}}<br>{{product3}}<br>{{product4}}<br>{{product5}}<br>{{product6}}<br>{{product7}}<br>{{product8}}<br>{{product9}}<br>{{product10}}<br></p> -->
+    <!-- calcultion table -->
+
+    <div class="c">
+        <table>
+            <tr class="chd">
+             <td width="80px" rowspan="2"><p>S.NO.</p></td>
+             <td width="700px"  rowspan="2"><p>Particulars</p></td>
+             <td width="150px"  rowspan="2"><p>Qty</p></td>
+             <td width="180px"  rowspan="2"><p>Rate</p></td>
+             <td width="290px" colspan="2"><p>Amount</p></td>
+            </tr>
+            <tr>
+              <td width="175px" id="rs"><p>&emsp;Rs.</p></td>
+              <td width="30px" id="rs"><p>&nbsp;Ps.</p></td>
+            </tr>
+            <tr>
+             <td id="x" rowspan="2" ><h4 id="serial">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></h4> </td>
+             <td id="x" rowspan="2"><h4 id="parti">{{history.product_1}}<br>{{history.product_2}}<br>{{history.product_3}}<br>{{history.product_4}}<br>{{history.product_5}}<br>{{product_6}}<br>{{history.product_7}}<br>{{history.product_8}}<br>{{history.product_9}}<br>{{history.product_10}}<br></h4>
+             </td>
+             <td id="x" ><h4 id="serialqty">{{history.quantity_1}}<br>{{history.quantity_2}}<br>{{history.quantity_3}}<br>{{history.quantity_4}}<br>{{history.quantity_5}}<br>{{history.quantity_6}}<br>{{history.quantity_7}}<br>{{history.quantity_8}}<br>{{history.quantity_9}}<br>{{history.quantity_10}}<br></h4></td>
+             <td id="x" ><h4 id="serialqty">{{history.rate_1}}<br>{{history.rate_2}}<br>{{history.rate_3}}<br>{{history.rate_4}}<br>{{history.rate_5}}<br>{{history.rate_6}}<br>{{history.rate_7}}<br>{{history.rate_8}}<br>{{history.rate_9}}<br>{{history.rate_10}}<br></h4></td>
+             <td id="x" ><h4 id="serialqty">{{history.amount_1}}<br>{{history.amount_2}}<br>{{history.amount_3}}<br>{{history.amount_4}}<br>{{history.amount_5}}<br>{{history.amount_6}}<br>{{history.amount_7}}<br>{{history.amount_8}}<br>{{history.amount_9}}<br>{{history.amount_10}}<br></h4></td>
+             <td id="x" ></td>
+            </tr>
+            <tr>
+                
+                <td  id="val" colspan="2"><h4>&emsp;Sub Total</h4> </td>
+                <td id="val" colspan="2"> <h4 id="serialto">{{history.total_amount}}</h4></td>
+                
+            </tr>
+            <tr>
+                <td id="valu" colspan="2" rowspan="5"><h4>&emsp;Rupees (in words)</h4><h3 style="margin-left: 2%;">{{history.numword}}</h3></td>
+                <td id="val" colspan="2"><h4>&emsp;CGST @</h4></td>
+                <td id="val" colspan="2"><h4  id="serialto">{{history.CGST}}</h4></td>
+            </tr>
+              <tr>
+                <td id="val" colspan="2"><H4>&emsp;SGST @</H4></td>
+                <td id="val" colspan="2"><h4  id="serialto">{{history.SGST}}</h4></td>
+              </tr>
+              <tr>
+                <td id="val" colspan="2"><H4>&emsp; Round of</H4></td>
+                <td id="val" colspan="2"><h4 id="serialto">{{history.Round_gst}}</h4></td>
+              </tr>
+              <tr>
+                <td id="val" colspan="2"><H4>&emsp;GRAND TOTAL</H4></td>
+                <td id="val" colspan="2"><h3  id="serialto">{{history.Grand_Total}}</h3></td>
+              </tr>
+
+        </table>
+    </div>
+
+    <p class="oe" >O.&O.E</p>
+
+    <div style="display: flex;flex-direction: row;">
+ <div class="d">
+    <h4 class="bkwd"> &emsp; BANK DETAIL :&emsp;</h4>
+    <table class="bank">
+        <tr>
+            <td>Name</td>
+            <td>: LOGICAL SUPPORT AND SOLUTIONS</td>
+        </tr>
+        <tr>
+            <td>Bank</td>
+            <td>: STATE BANK OF INDIA</td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>: FIVE ROAD CIRCLE BRANCH</td>
+        </tr>
+        <tr>
+            <td>Account No</td>
+            <td>: 39193469132</td>
+        </tr>
+        <tr>
+            <td>IFSC</td>
+            <td>: SBIN0040637</td>
+        </tr>
+    </table>
+ </div>
+  <div class="e">
+    
+    <p id="for" > &emsp;For </p> 
+    <h2> &emsp;LOGICAL SUPPORT AND SOLUTIONS</h2>
+    <h5 id="sign">Proprietor</h5>
+  </div>
+ </div>
+
+</div>
+
+<div class="down">  </div>
+{% endblock %}
+</body>
+</html>

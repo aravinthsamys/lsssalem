@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lss-Form</title>
+    <script src="{% static 'all.js' %}"></script>
+    <style>
+        /* type number arrow */
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        input {
+            text-align: center;
+            outline: none;
+        }
+        
+        .fill {
+            width: 80%;
+            height: min-content;
+            box-shadow: 5px 5px 10px;
+            margin: 5% 0% 0% 10%;
+            text-align: center;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 50px;
+            background-color: white;
+            position: relative;
+        }
+         .fa-1,.fa-2,.fa-3,.fa-4,.fa-5,.fa-6,.fa-7,.fa-8,.fa-9,.fa-0{
+            background-color: rgb(128, 224, 236);color: white;padding: 5px 10px 5px 10px;
+            border-radius: 20px;margin-bottom: 15px;
+        }
+
+        .a {
+            z-index: 1;
+            position: relative;
+            height: fit-content;
+            bottom: 300px
+        }
+        
+        .person {
+            /* padding-right: 20%; */
+            width: 70%;
+            border-radius: 13px;
+            border: none;
+            height: 30px;
+        }
+        
+        #qty1,
+        #qty2,
+        #qty3,
+        #qty4,
+        #qty5,
+        #qty6,
+        #qty7,
+        #qty8,
+        #qty9,
+        #qty10 {
+            width: 50px;
+            border-radius: 8px;
+            border: 1px solid rgb(10, 10, 10);
+            height: 30px;
+        }
+        
+        #rate1,
+        #rate2,
+        #rate3,
+        #rate4,
+        #rate5,
+        #rate6,
+        #rate7,
+        #rate8,
+        #rate9,
+        #rate10 {
+            /* padding-right: 8%; */
+            width: 50%;
+            border-radius: 13px;
+            border: 1px solid rgb(0, 0, 0);
+            height: 30px;
+        }
+        
+        #amount1,
+        #amount2,
+        #amount3,
+        #amount4,
+        #amount5,
+        #amount6,
+        #amount7,
+        #amount8,
+        #amount9,
+        #amount10 {
+            /* padding-right: 8%; */
+            width: 60%;
+            border-radius: 13px;
+            border: 1px solid rgb(0, 0, 0);
+            height: 30px;
+        }
+        
+        .product {
+            /* padding-right: 20%; */
+            width: 80%;
+            border-radius: 13px;
+            border: 1px solid rgb(0, 0, 0);
+            height: 30px;
+        }
+        
+        #head {
+            font-size: 40px;
+            font-family: 'Franklin Gothic Medium ', 'Arial Narrow ', Arial, sans-serif;
+        }
+        
+        #particulars {
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium ', 'Arial Narrow ', Arial, sans-serif
+        }
+        
+        .formback {
+            z-index: 0;
+            position: relative;
+            bottom: 59px;
+            width: 100.6%;
+            right: 1px;
+            border-radius: 50px 50px 190px 190px;
+            height: 290px;
+        }
+        
+        body {
+            background: rgb(18, 184, 226);
+            background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(142, 182, 243) 99%);
+        }
+        
+        .b {
+            position: relative;
+            bottom: 300px;
+            background-color: rgba(80, 78, 78, 0.164);
+            width: 80%;
+            margin-left: 10%;
+            border-radius: 20px;
+        }
+        
+        #submit {
+            position: relative;
+            bottom: 170px;
+            color: white;
+            background-color: blue;
+            padding: 15px;
+            border-radius: 15px;
+            border: none;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .foot {
+            height: 20px;
+        }
+        
+        #plusicon {
+            font-size: 40px;
+        }
+        
+        .b1,
+        #pro2,
+        #pro3,
+        #pro4,
+        #pro5,
+        #pro6,
+        #pro7,
+        #pro8,
+        #pro9,
+        #pro10 {
+            background-color: azure;
+            width: 95%;
+            margin-left: 2.5%;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+        
+        .plustext {
+            position: relative;
+            bottom: 10px;
+            color: rgb(85, 10, 95);
+            font-weight: bolder;
+        }
+        
+        .plusbutton {
+            border: none;
+            background-color: rgb(135, 211, 255);
+            padding: 5px 15px 5px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        #pro2,
+        #pro3,
+        #pro4,
+        #pro5,
+        #pro6,
+        #pro7,
+        #pro8,
+        #pro9,
+        #pro10 {
+            display: none;
+        }
+        /* .tabletot, */
+        
+        td {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0);
+            border-collapse: collapse;
+        }
+        
+        .tabletot {
+            margin: auto;
+            border-collapse: collapse;
+        }
+        
+        .c {
+            background-color: rgb(97, 197, 255);
+            width: 80%;
+            margin: auto;
+            border-radius: 20px;
+            position: relative;
+            bottom: 300px;
+        }
+        
+        .totl,
+        .total {
+            font-family: 'Franklin Gothic Medium ', 'Arial Narrow ', Arial, sans-serif;
+        }
+
+        .c input{
+            border: none;
+            border-radius: 20px;
+            height: 25px;
+        }
+        /* calculations*/
+        
+        #subtotal {
+            border-radius: 10px;
+            border-color: white;
+            height: 20px;
+            position:absolute;
+        }
+        @media only screen and (max-width:600px) {
+            .c{width:95%}
+        }
+        @media only screen and (max-width:600px) {
+            .formback {
+                left: -1px;
+                top: -60px;
+                border-radius: 50px 50px 100px 100px;
+                height: 300px;
+                filter: saturate(1);
+                position: relative;
+                width: 101%;
+            }
+            .fill {
+                width: 95%;
+                margin: 2.5% 0% 0% 2.5%;
+            }
+            .b {
+                width: 95%;
+                margin: 2.5% 0% 0% 2.5%;
+            }
+            .b1 {
+                width: 95%;
+                margin-top: 30px;
+                margin: 2.5% 0% 0% 2.5%;
+            }
+            #head {
+                font-size: 30px;
+            }
+            body {
+                background: linear-gradient(0deg, rgba(33, 171, 204, 1) 0%, rgb(61, 131, 235) 99%);
+            }
+            #pro2-remove {
+                margin-top: 10px;
+            }
+            .plusbutton span {
+                display: none;
+            }
+            .plusbutton {
+                background-color: transparent;
+            }
+        }
+    </style>
+    <style>
+        #name{
+            position: relative;
+            bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <noscript><h3> You must have JavaScript enabled in order to use this order form. Please 
+        enable JavaScript and then reload this page in order to continue. </h3> 
+        <meta HTTP-EQUIV="refresh" content=0; url="javascriptNotEnabled.php"></noscript>
+
+    <br id="up"> <br>
+    <div class="fill">
+        <form  action="bill" method="post" >{% csrf_token %}
+            <br> <br> <br> <img class=" formback " src="{% static 'images/formback.jpg' %} " alt=" ">
+            <div class="a">
+                <span id="head">LSS BILL FORM</span>
+                <br> <br>
+                <input type="text"  name="name" class="person" placeholder=" Name... " onkeyup="dat()"  required> <br> <br>
+
+                <input type="text" name="p_gst" class="person" placeholder=" Party 's GST No.. "> <br> <br>
+
+                <input type="text" name="date" class="person" id="date" placeholder=" Date.... "> <br> <br>
+                <br> <br> <br>
+            </div>
+
+            <div class="b">
+                <br> <br>
+                <span id="particulars">Particulars</span> <br> <br>
+                <div class="b1" id="pro1"><br><i class="fa-solid fa-1"></i> <br>
+                    <input type="text" name="product1" id="prod1" class="product" placeholder=" product 1 " required>
+                    <br> <br>
+                    <input type="number" name="rate1" id="rate1" placeholder=" product 1 : rate " value="0" onkeyup="amt1()">
+                    <input type="number" name="qty1" id="qty1" placeholder=" Qty " value="0" onkeyup="amt1()">
+
+                    <br> <br> <input type="number" name="amount_1" id="amount1" placeholder=" amount 1 " value="0"> <br> <br>
+
+                    <button type="button" class="plusbutton" id="pro1-but" onclick="addplus2()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                         <span class="plustext"> Add additional product</span></button>
+                    <br> <br>
+
+                </div>
+                <div class="b1" id="pro2"><br><i class="fa-solid fa-2"></i> <br>
+                    <input type="text" name="product2" id="prod2" class="product" placeholder=" product 2 ">
+                    <br> <br>
+                    <input type="number" name="rate2" id="rate2" placeholder=" product 2 : rate " value="0" onkeyup="amt2()">
+                    <input type="number" name="qty2" id="qty2" placeholder=" Qty " value="0" onkeyup="amt2()">
+
+                    <br> <br> <input type="number" name="amount_2" id="amount2" placeholder=" amount 2 " value="0"> <br>
+                    <button class="plusbutton" type="button" id="pro2-but" onclick="addplus3()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro2-remove" onclick="removepro2()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button><br> <br>
+                </div>
+                <div class="b1" id="pro3"><br><i class="fa-solid fa-3"></i> <br>
+                    <input type="text" name="product3" id="prod3" class="product" placeholder=" product 3 ">
+                    <br> <br>
+                    <input type="number" name="rate3" id="rate3" placeholder=" product 3 : rate " value="0" onkeyup="amt3()">
+                    <input type="number" name="qty3" id="qty3" placeholder=" Qty " value="0" onkeyup="amt3()">
+
+                    <br> <br> <input type="number" name="amount_3" id="amount3" placeholder=" amount 3" value="0"> <br> <br>
+                    <button class="plusbutton" type="button" id="pro3-but" onclick="addplus4()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true " color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro3-remove" onclick="removepro3()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true " color="red" ></i>
+                            <span class="plustext">Remove item</span></button> <br> <br>
+                </div>
+
+
+                <div class="b1" id="pro4"><br><i class="fa-solid fa-4"></i> <br>
+                    <input type="text" name="product4" id="prod4" class="product" placeholder=" product 4 ">
+                    <br> <br>
+                    <input type="number" name="rate4" id="rate4" placeholder=" product 4 : rate " value="0" onkeyup="amt4()">
+                    <input type="number" name="qty4" id="qty4" placeholder=" Qty " value="0" onkeyup="amt4()">
+
+                    <br> <br> <input type="number" name="amount_4" id="amount4" placeholder=" amount 4 " value="0"> <br> <br>
+                    <button class="plusbutton" type="button" id="pro4-but" onclick="addplus5()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true " color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro4-remove" onclick="removepro4()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true " color="red" ></i>
+                            <span class="plustext">Remove item</span></button><br> <br>
+                </div>
+                <div class="b1"  id="pro5" ><br><i class="fa-solid fa-5"></i> <br>
+                    <input type="text" name="product5" id="prod5" class="product" placeholder=" product 5 ">
+                    <br> <br>
+                    <input type="number" name="rate5" id="rate5" placeholder=" product 5 : rate " value="0" onkeyup="amt5()">
+                    <input type="number" name="qty5" id="qty5" placeholder=" Qty " value="0" onkeyup="amt5()">
+
+                    <br> <br> <input type="number" name="amount_5" id="amount5" placeholder=" amount 5 " value="0"> <br> <br>
+                    <button class="plusbutton" type="button" id="pro5-but" onclick="addplus6()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro5-remove" onclick="removepro5()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button> <br> <br>
+                </div>
+                <div class="b1" id="pro6"><br><i class="fa-solid fa-6"></i> <br>
+                    <input type="text" name="product6" id="prod6" class="product" placeholder=" product 6 ">
+                    <br> <br>
+                    <input type="number" name="rate6" id="rate6" placeholder=" product 6 : rate " value="0" onkeyup="amt6()">
+                    <input type="number" name="qty6" id="qty6" placeholder=" Qty"  value="0" onkeyup="amt6()">
+
+                    <br> <br> <input type="number" name="amount_6" id="amount6" placeholder=" amount 6 " value="0"> <br> <br>
+                    <button class="plusbutton" type="button" id="pro6-but" onclick="addplus7()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro6-remove" onclick="removepro6()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button><br> <br>
+                </div>
+                <div class="b1" id="pro7">
+                    <br> <i class="fa-solid fa-7"></i><br>
+                    <input type="text" name="product7" id="prod7" class="product" placeholder=" product 7 ">
+                    <br> <br>
+                    <input type="number" name="rate7" id="rate7" placeholder=" product 7 : rate " value="0" onkeyup="amt7()">
+                    <input type="number" name="qty7" id="qty7" placeholder=" Qty " value="0" onkeyup="amt7()">
+                    <br> <br>
+                    <input type="number" name="amount_7" id="amount7" placeholder=" amount 7 " value="0" ><br> <br>
+                    <button class="plusbutton" type="button" id="pro7-but" onclick="addplus8()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro7-remove" onclick="removepro7()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button> <br> <br>
+                </div>
+                <div class="b1" id="pro8"><br><i class="fa-solid fa-8"></i> <br>
+                    <input type="text" name="product8" id="prod8" class="product" placeholder=" product 8 ">
+                    <br> <br>
+                    <input type="number" name="rate8" id="rate8" placeholder=" product 8 : rate " value="0" onkeyup="amt8()">
+                    <input type="number" name="qty8" id="qty8" placeholder=" Qty " value="0" onkeyup="amt8()">
+
+                    <br> <br> <input type="number" name="amount_8" id="amount8" placeholder=" amount 8 " value="0"> <br> <br>
+                    <button class="plusbutton" type="button" id="pro8-but" onclick="addplus9()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro8-remove" onclick="removepro8()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button> <br> <br>
+                </div>
+                <div class="b1" id="pro9"><br><i class="fa-solid fa-9"></i> <br>
+                    <input type="text" name="product9" id="prod9" class="product" placeholder=" product 9 ">
+                    <br> <br>
+                    <input type="number" name="rate9" id="rate9" placeholder=" product 9 : rate " value="0" onkeyup="amt9()">
+                    <input type="number" name="qty9" id="qty9" placeholder=" Qty " value="0" onkeyup="amt9()">
+
+                    <br> <br> <input type="number" name="amount_9" id="amount9" placeholder=" amount 9 " value="0"> <br> <br>
+                    <button class="plusbutton" type="button" id="pro9-but" onclick="addplus10()"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro9-remove" onclick="removepro9()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button><br> <br>
+                </div>
+                <div class="b1" id="pro10"><br><i class="fa-solid fa-1"></i><i class="fa-solid fa-0"></i> <br>
+                    <input type="text" name="product10" id="prod10" class="product" placeholder=" product 10 ">
+                    <br> <br>
+                    <input type="number" name="rate10" id="rate10" placeholder=" product 10 : rate " value="0" onkeyup="amt10()">
+                    <input type="number" name="qty10" id="qty10" placeholder=" Qty " value="0" onkeyup="amt10()">
+
+                    <br> <br> <input type="number" name="amount_10" id="amount10" placeholder=" amount 10 " value="0"> <br> <br>
+                    <button class="plusbutton" type="button " id="pro10-but"> <i id="plusicon" class="fa fa-plus-square" aria-hidden="true" color="green" ></i>
+                        <span class="plustext"> Add additional product</span></button>
+                    <button type="button" class="plusbutton" id="pro10-remove" onclick="removepro10()"> <i id="plusicon" class="fa fa-minus-square" aria-hidden="true" color="red" ></i>
+                            <span class="plustext">Remove item</span></button> <br> <br>
+                </div>
+                <br> <br>
+            </div>
+            <br> <br>
+            <div class="c">
+                <br> <button type="button" onclick="subtotal()">click</button><br>
+                <table class='tabletot'>
+                    <tr>
+                        <td width="30% " height="50px"><span class="totl">Sub Total</span></td>
+                        <td width="30% ">
+                            <input type="number" id="subtotalin" name="totalsub" value="0">                   
+                            <span id="subtotal" name="amt"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30px "><span class="totl">CGST @</span></td>
+                        <td> <input type="number" name="cgst" id="cgst" value="0" step="0.01"></td>
+                    </tr>
+                    <tr>
+                        <td height="30px "><span class="totl">SGST @</span></td>
+                        <td> <input type="number" name="sgst" id="sgst" value="0" step="0.01"></td>
+                    </tr>
+                    <tr>
+                        <td height="30px "><span class="totl">Round of</span></td>
+                        <td> <input type="number" name="roundgst" id="roundgst" value="0" step="0.01"> </td>
+                    </tr>
+                    <tr>
+                        <td height="50px "><span class="total">GRAND TOTAL</span></td>
+                        <td> <input type="number" name="grandtotal" id="grandtotal" value="0" step="0.01"> </td>
+                    </tr>
+
+                </table> <br> <br>
+            </div>
+            <button id="submit" type="submit" > <b> SUBMIT</b></button>
+            <p>
+                <a href="#up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+            </p>
+    </div>
+
+
+
+    </form>
+    </div>
+
+    <div class="foot">
+
+    </div>
+    <script src="{% static 'form.js' %}"></script>
+</body>
+
+</html>

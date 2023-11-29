@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lss-Home</title>
+    <script src="{% static 'all.js' %}"></script>
+    <style>
+        body,
+        .main {
+            margin: 0; width: 100%;
+        }
+        
+        span {
+            color: rgba(0, 0, 0, 0.74);
+        }
+        
+        body {
+            background-color: rgb(217, 240, 243);
+            /* background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 157, 221) 99%); */
+           
+        }
+        
+        .navbar
+        {
+           background-color: rgb(16, 16, 94);
+           padding-bottom: 20px;
+        }
+        
+        .navbar,
+        .nav2 {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .nav1 {
+            margin-left: 10%;
+            margin-top: 1%;
+        }
+        
+        .nav2,
+        .nav2 div {
+            margin-left: 25%;
+            margin-top: 1%;
+        }
+        
+        .nav2 button {
+            margin-left: 80%;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 700px orange;
+            background-color: rgb(15, 115, 133);
+            color: aliceblue;
+            padding: 10px 30px 10px 30px;
+        }
+        
+        .hrnav {
+            border-color: orange;
+        }
+        
+        #nav1lss {
+            font-size: 2.5rem;
+            color: rgb(189, 26, 26);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
+        @media only screen and (max-width:600px) {
+            .nav1 {
+                margin-left: 9%;
+            }
+            .nav2 button:first-child {
+                margin-left: 15%;
+                margin-right: 10%;
+            }
+            #nav1lss {
+                font-size: 3rem;
+            }
+            .nav2,
+            .nav2 div {
+                margin-top: 2.5%;
+            }
+            .nomedia {
+                display: none;
+            }
+            .nav2 {
+                width: 10px;
+                margin-left: 10%;
+            }
+        }
+        /* for container a */
+        
+        .containera {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .a {
+            width: 60%;
+            margin-left: 5%;
+        }
+        
+        .a1 {
+            width: 20%;
+            margin-right: 5%;
+            margin-left: 5%;
+            text-align: center;
+        }
+        
+        .a p:first-child {
+            margin-top: 17%;
+        }
+        
+        #l1 {
+            color: rgb(0, 0, 0);
+            font-weight: 800;
+            font-size: 2.7rem;
+            text-decoration: underline;
+            text-decoration-color: rgb(0, 0, 0);
+            text-underline-offset: 18px;
+        }
+        
+        #l2 {
+            color: #1968e8;
+            font-weight: 800;
+            font-size: 4rem;
+            /* text-shadow:0px 0px 250px #f54d4d; */
+        }
+        
+        .adr {
+            color: rgb(13, 129, 42);
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        /* a1 style */
+        
+        .a1-1 {
+            /* border: 4px solid orange; */
+            margin-top: 55%;
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        .a1-1 button{border-radius: 40px;background-color: rgb(255, 150, 12);color: white;}
+        
+        .a1-1 #history {
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 2rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /* box-shadow: 0px 0px 150px black; */
+            /* background-color: rgba(201, 194, 194, 0.897); */
+            margin-top: 20%;
+        }
+        
+        .a1-1 #billing {
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 1.4rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 20%;
+            /* box-shadow: 0px 0px 150px black; */
+            /* background-color: rgba(226, 217, 217, 0.863); */
+        }
+        
+        @media only screen and (max-width:600px) {
+            .containera {
+                display: block;
+            }
+            #l1 {
+                font-size: 1.8rem;
+            }
+            #l2 {
+                font-size: 3.5rem;
+            }
+            .adr {
+                font-size: 1rem;
+                width: 350px;
+            }
+            .a1-1 {
+                border: none;
+            }
+            .a1-1 #billing {
+                position: relative;
+                bottom: 20px;
+                font-size: 20px;
+                padding-right: 30px;
+            }
+            .a1-1 #history {
+                position: relative;
+                bottom: 134px;
+                left: 190px;
+                font-size: 20px;
+                padding: 10px 30px 10px 40px;
+            }
+            .a1 {
+                height: 30px;
+            }
+            .brlast {
+                display: none;
+            }
+            .a1-1 p {
+                /* text-wrap: nowrap; */
+                text-align: center;
+                margin-left: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav1"><span id="nav1lss" class="nomedia">BILLING : </span><span id="nav1lss">LSS</span></div>
+            <div class="nav2">
+                <div><button onclick="day()"><i class="fa fa-sun" aria-hidden="true"></i>DAY</button></div>
+                <div> <button onclick="dark()"><i class="fa fa-moon" aria-hidden="true"></i>DARK</button></div>
+            </div>
+        </div>
+        <hr class="hrnav">
+        <div class="containera">
+            <div class="a">
+                <p><span id="l1">WELCOME TO</span></p><br>
+                <p><span id="l2">LOGICAL SUPPORT AND SOLUTIONS</span></p> <br>
+                <p class="adr">230,G1,Itteri Road,Meyanoor,Salem - 636 004., Tamil Nadu</p>
+            </div>
+            <div class="a1">
+                <div class="a1-1">
+                    <form action="/forms" method="post">{% csrf_token %}   &emsp;
+                        <button type="submit" id="billing"><i class="fa fa-pencil-square" aria-hidden="true"></i>
+                            BILL GENERATE</button>
+                    </form> <br> 
+                    <form action="/history" method="post">{% csrf_token %}   &emsp;
+                        <button type="submit" id="history"><i class="fa fa-history" aria-hidden="true"></i>
+                            HISTORY</button>
+                    </form> 
+                    <!-- <p>copyright disclaimer</p> -->
+                    <div class="brlast"><br><br><br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <script>
+        function dark(){
+    document.querySelector("body").style.cssText=" background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 99%);";
+    document.querySelector("#l1").style.color="white"
+}
+function day(){
+    document.querySelector("body").style.cssText=" background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(216, 157, 221) 99%);"
+    document.querySelector("#l1").style.color="black"
+}
+    </script>
+</body>
+
+</html>

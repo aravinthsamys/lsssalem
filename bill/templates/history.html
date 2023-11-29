@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill-history</title>
+    <script src="{% static 'all.js' %}"></script>
+<style>
+    table,td{
+        border: 2px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        margin: auto;
+    }
+.datacontainer{
+    margin-top: 5%;
+}
+table{
+    width: 70%;
+}
+.pdfmaker{
+     border: none;padding: 10px 70px 10px 80px;color: white;background-color: blue;margin: 2% 25% 4% 25%;
+ display: flex;
+    }
+   
+</style>
+</head>
+<body>
+    <div class="pdfmaker">
+        <form action="/home" method="post">{% csrf_token %}   &emsp;
+            <button type="submit"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                GO Back</button>
+        </form>
+        &emsp;&emsp;
+        
+        <form action="/forms" method="post">{% csrf_token %}   &emsp;
+            <button type="submit"><i class="fa fa-list" aria-hidden="true"></i> Create Invoice</button>
+        </form>
+        &emsp;&emsp;</div>
+    <div class="datacontainer">
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>NAME</td>
+                <td>PART'S GSTIN</td>
+                <td>DATE</td>
+                <td>VIEW</td>
+            </tr>
+            {% block content %}
+            {% for x in history %}
+            <tr>
+                <td>{{x.id}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.party_GST}}</td>
+                <td>{{x.date}}</td>
+                <td><a href="viewhistory/{{ x.id }}">view </a></td>
+            </tr>
+            {% endfor %}
+            {% endblock %}
+        </table>
+    </div>
+</body>
+</html>

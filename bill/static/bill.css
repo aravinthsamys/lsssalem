@@ -1,0 +1,40 @@
+.a table{margin-top: 3%;}  
+.contact,.con h4{font-size: 12px;} .a table td{height:80px;}
+.b table,.c table,.a table,.c td,.b td{border: 1px solid black;border-collapse: collapse;}
+td{height: 25px;}
+.a,.c,.b{border: 2px solid rgba(0, 0, 0, 0);margin-left:15%;margin-right: 15%; border-radius: 20px;}
+
+.invoice{text-decoration: underline;margin: 0% 0% 0% 0%;font-size: 100%; font-family: Arial, Helvetica, sans-serif;}
+.logo{height: 150px;width: 200px; margin-top: 0px;border-radius: 20px;}
+.invoice{position: relative; top: -22%;}
+.invoice{margin-left: 20%;text-align: center;}
+.cmp-tit{font-family: Franklin Gothic Medium, serif;}
+.log1{text-align: center;}
+.cmp-adr{font-size: 100%;} .contact{display: inline-block;margin-left: 22%;} 
+.contact{text-align: left; position: relative;}  
+.invoice,.cmp-adr,.con{margin-top: 0;text-align: center;}
+.cmp-tit{font-size: 150%;text-align: center;margin-right: 10%;} 
+.cmp-adr{text-align: center;margin-right: 20%;}
+
+/* the gstin */
+
+p,h4{display: inline;}
+.c td{text-align: center;}
+.chd,#rs{background-color: rgb(255, 255, 255);font-weight: 800; color: rgb(20, 9, 184);text-align: left; margin-left:20px;}
+.c #x{height: 600px;text-align: left;}
+#val,#valu{text-align: left;}
+.oe{position: absolute;top:176%;left:23%;z-index: 3;}
+
+/* bank dettaails */
+.d{border: 1px solid black;margin-left: 15%;width: 710px; border-radius:10px 10px 10px 20px;}
+  .bkwd{left: 4%;} .bkwd,.bank{display:inline} .d table{margin-left: 0%;}
+  .bank td{font-size: 13px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+.e{border: 1px solid black; width:710px;height: 147px;margin-right: 15%;}
+.e{border-radius:10px 10px 20px 10px; text-align: center;height: 200px;} .e h2{font-size: 22px;text-align: center;} 
+#for{margin-top: 8%;}
+#sign{margin-top:20%} .bank{margin-left: 10%;}
+
+
+.down{
+  height: 200px;
+}

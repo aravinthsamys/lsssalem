@@ -1,3 +1,3 @@
 # lsssalem
 
-http://bit.ly/lssbill
+http://bit.ly/Lssbill
